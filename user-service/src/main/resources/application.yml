@@ -1,0 +1,25 @@
+#User Service Yaml file
+
+server:
+  port: 9050
+
+spring:
+  application:
+    name: user-service
+  datasource:
+    url: jdbc:postgresql://localhost:5432/dev
+    username:
+    password:
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        format-sql: true
+
+
+  kafka:
+    bootstrap-servers: localhost:9092
+    topic:
+      user-random_topic: user-random-topic
+
+
