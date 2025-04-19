@@ -3,6 +3,8 @@
 server:
   port: 9050
 
+
+
 spring:
   application:
     name: user-service
@@ -11,6 +13,8 @@ spring:
     username:
     password:
   jpa:
+    hibernate:
+      ddl-auto: create-drop
     show-sql: true
     properties:
       hibernate:
@@ -21,5 +25,11 @@ spring:
     bootstrap-servers: localhost:9092
     topic:
       user-random_topic: user-random-topic
+      user-created_topic: user_created-topic
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.LongSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      acks: all
+      retries: 3
 
 
