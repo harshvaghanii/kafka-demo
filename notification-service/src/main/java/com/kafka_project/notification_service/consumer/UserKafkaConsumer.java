@@ -9,8 +9,18 @@ import org.springframework.stereotype.Service;
 public class UserKafkaConsumer {
 
     @KafkaListener(topics = "${spring.kafka.topic.user-random_topic}")
-    public void handleUserRandomTopic(String message) {
-        log.info("Message Received: {}", message);
+    public void handleUserRandomTopic0(String message) {
+        log.info("Message Received in client 0: {}", message);
+    }
+
+    @KafkaListener(topics = "${spring.kafka.topic.user-random_topic}")
+    public void handleUserRandomTopic1(String message) {
+        log.info("Message Received in client 1: {}", message);
+    }
+
+    @KafkaListener(topics = "${spring.kafka.topic.user-random_topic}")
+    public void handleUserRandomTopic2(String message) {
+        log.info("Message Received in client 2: {}", message);
     }
 
 }

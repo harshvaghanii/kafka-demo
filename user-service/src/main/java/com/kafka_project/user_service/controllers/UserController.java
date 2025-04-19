@@ -24,7 +24,11 @@ public class UserController {
 
     @PostMapping()
     public ResponseEntity<String> sendMessage(@RequestBody MessageDto messageDto) {
-        kafkaTemplate.send(KAFKA_RANDOM_USER_TOPIC, messageDto.getMessage());
+
+        log.info("Sending a 1000 messages to check which partition takes it");
+        for (int i = 1; i <= 1000000; i++) {
+            kafkaTemplate.send(KAFKA_RANDOM_USER_TOPIC, messageDto.getMessage() + i);
+        }
         return ResponseEntity.ok("Message queued!");
     }
 
